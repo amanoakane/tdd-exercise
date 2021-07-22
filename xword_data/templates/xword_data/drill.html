@@ -1,0 +1,17 @@
+{% extends 'base.html' %} 
+{% block content%}
+<form action="{% url 'drill_post' %}" method="POST">
+    {% csrf_token %}
+    {% if text %}
+    <p>{{text}}, try again!</p>
+    {% else %}
+    <p>Enter your guess: </p>
+    {% endif %}
+
+    <p>(Clue: {{ clue_text }})</p>
+    <input type="text" name="answer"/>
+    <input type="hidden" name="clue_id" value="{{clue_id}}"/>
+    <input type="submit" value="guess" />
+</form>
+<a href="{% url 'xword-answer' clue_id=clue_id %}">See answer here</a>
+{% endblock %} 

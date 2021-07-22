@@ -15,7 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from xword_data.views import drill_get, answer_view, drill_post
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('xword-drill/', drill_get, name='xword-drill'),
+    path('xword-answer/<int:clue_id>/', answer_view, name='xword-answer'),
+    path('drill-post/', drill_post, name='drill_post')
 ]
+
